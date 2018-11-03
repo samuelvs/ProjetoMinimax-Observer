@@ -38,15 +38,27 @@ public class Jogo{
 		tabuleiro.fazerJogadaJogadores(l, c, esp);
 	}
 	
-	public void jogadasTabuleiroComputadores() {
-		int[][] tabAlterado = tabuleiro.getTabuleiro();
-		for(int i = 0; i < 3; i++) {
-			for(int j = 0; j < 3; j++) {
-				tabAlterado[i][j] = (tabAlterado[i][j]*-1);
+	public void jogadasTabuleiroComputadores(int jogador) {
+		int[][] tabAlterado;
+		tabAlterado = tabuleiro.getTabuleiro();
+		if(jogador == 1) {
+			for(int i = 0; i < 3; i++) {
+				for(int j = 0; j < 3; j++) {
+					tabAlterado[i][j] = (tabAlterado[i][j]*-1);
+				}
 			}
+			
+			tabAlterado = minimax.fazerMinimax(tabAlterado);
+			for(int i = 0; i < 3; i++) {
+				for(int j = 0; j < 3; j++) {
+					tabAlterado[i][j] = (tabAlterado[i][j]*-1);
+				}
+			}
+		}else if(jogador == 0) {
+			tabAlterado = minimax.fazerMinimax(tabAlterado);
 		}
-		int[][] novoTab = minimax.fazerMinimax(tabAlterado);
-		tabuleiro.setTabuleiro(novoTab);
+		
+		tabuleiro.setTabuleiro(tabAlterado);
 	}
 
 	public String getVencedor() {

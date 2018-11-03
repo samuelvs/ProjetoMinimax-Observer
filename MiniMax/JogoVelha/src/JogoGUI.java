@@ -99,9 +99,9 @@ public class JogoGUI implements Observer{
 				
 			} else if(modo == 3) {
 				if(jogador == 0) {
-					jogo.jogadasTabuleiroComputadores();	
+					jogo.jogadasTabuleiroComputadores(jogador);	
 				} else {
-					jogo.jogadasTabuleiroComputadores();
+					jogo.jogadasTabuleiroComputadores(jogador);
 				}
 			}
 			
